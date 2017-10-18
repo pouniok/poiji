@@ -9,4 +9,6 @@ public final class PoijiConstants {
     }
 
     public final static String DEFAULT_DATE_PATTERN = "dd/M/yyyy";
+
+    public final static boolean IMPORT_FORMATTED_CELLS = true;
 }

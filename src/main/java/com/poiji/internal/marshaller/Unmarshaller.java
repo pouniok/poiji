@@ -81,7 +81,7 @@ final class Unmarshaller extends Deserializer {
                     field.setAccessible(true);
 
                 if (cell != null) {
-                    String value = df.formatCellValue(cell);
+                    String value = options.importFormattedCells() ? df.formatCellValue(cell) : cell.getStringCellValue();
                     o = castValue(fieldType, value);
                 } else {
                     o = castValue(fieldType, "");

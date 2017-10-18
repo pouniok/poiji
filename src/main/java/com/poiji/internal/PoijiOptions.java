@@ -9,6 +9,7 @@ public final class PoijiOptions {
 
     private int skip;
     private String datePattern;
+    private boolean importFormattedCells;
 
     private PoijiOptions() {
         super();
@@ -28,6 +29,20 @@ public final class PoijiOptions {
         return datePattern;
     }
 
+    private PoijiOptions setDatePattern(String datePattern) {
+        this.datePattern = datePattern;
+        return this;
+    }
+
+    public PoijiOptions setImportFormattedCells(boolean importFormattedCells) {
+        this.importFormattedCells = importFormattedCells;
+        return this;
+    }
+
+    public boolean importFormattedCells() {
+        return importFormattedCells;
+    }
+
     /**
      * the number of skipped rows
      *
@@ -41,6 +56,7 @@ public final class PoijiOptions {
 
         private int skip = 1;
         private String datePattern = DEFAULT_DATE_PATTERN;
+        private boolean importFormattedCells = IMPORT_FORMATTED_CELLS;
 
         private PoijiOptionsBuilder() {
         }
@@ -50,7 +66,8 @@ public final class PoijiOptions {
         }
 
         public PoijiOptions build() {
-            return new PoijiOptions().setSkip(skip).setDatePattern(datePattern);
+            return new PoijiOptions().setSkip(skip).setDatePattern(datePattern)
+                  .setImportFormattedCells(importFormattedCells);
         }
 
         public static PoijiOptionsBuilder settings() {
@@ -59,6 +76,11 @@ public final class PoijiOptions {
 
         public PoijiOptionsBuilder setDatePattern(String datePattern) {
             this.datePattern = datePattern;
+            return this;
+        }
+
+        public PoijiOptionsBuilder setImportFormattedCells(boolean importFormattedCells) {
+            this.importFormattedCells = importFormattedCells;
             return this;
         }
 
