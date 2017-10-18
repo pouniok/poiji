@@ -1,6 +1,7 @@
 package com.poiji.internal;
 
 import static com.poiji.util.PoijiConstants.DEFAULT_DATE_PATTERN;
+import static com.poiji.util.PoijiConstants.IMPORT_FORMATTED_CELLS;
 
 /**
  * Created by hakan on 17/01/2017.
@@ -26,12 +27,7 @@ public final class PoijiOptions {
     }
 
     public String datePattern() {
-        return datePattern;
-    }
-
-    private PoijiOptions setDatePattern(String datePattern) {
-        this.datePattern = datePattern;
-        return this;
+        return this.datePattern;
     }
 
     public PoijiOptions setImportFormattedCells(boolean importFormattedCells) {
@@ -40,7 +36,7 @@ public final class PoijiOptions {
     }
 
     public boolean importFormattedCells() {
-        return importFormattedCells;
+        return this.importFormattedCells;
     }
 
     /**
@@ -49,7 +45,7 @@ public final class PoijiOptions {
      * @return n rows skipped
      */
     public int skip() {
-        return skip;
+        return this.skip;
     }
 
     public static class PoijiOptionsBuilder {
@@ -66,8 +62,8 @@ public final class PoijiOptions {
         }
 
         public PoijiOptions build() {
-            return new PoijiOptions().setSkip(skip).setDatePattern(datePattern)
-                  .setImportFormattedCells(importFormattedCells);
+            return new PoijiOptions().setSkip(this.skip).setDatePattern(this.datePattern)
+                  .setImportFormattedCells(this.importFormattedCells);
         }
 
         public static PoijiOptionsBuilder settings() {
